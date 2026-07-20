@@ -1,5 +1,8 @@
 # Forge
+
 ### A human-in-the-loop pipeline that takes a product idea from Discovery to Delivery using AI agents.
+
+> Built by Bruno Aragão — a decade in B2B fintech sales, now building reliable AI systems. This is what "AI executes, the human decides" looks like in code.
 
 > Forge orchestrates AI agents through the full product lifecycle — discovery, specification, prototype, delivery — with mandatory human review at every phase. The human stays in command; the agents execute.
 
@@ -24,11 +27,13 @@ Each phase ends by writing an artifact and **stopping for human approval**. Noth
 
 Forge is operated through a visual mission-control dashboard — see the pipeline state, review each artifact rendered cleanly, approve with a click, and trigger runs.
 
-![Status cockpit](images/cockpit-status.png)
-![Artifact review](images/cockpit-review.png)
-![Degraded-state alarm](images/cockpit-degraded.png)
+[![Status cockpit](images/cockpit-status.png)](images/cockpit-status.png)
+[![Artifact review](images/cockpit-review.png)](images/cockpit-review.png)
+[![Degraded-state alarm](images/cockpit-degraded.png)](images/cockpit-degraded.png)
 
-*(Screenshots in `/images`.)*
+- **Status view** — the pipeline state at a glance: which phase is live, which artifacts are approved.
+- **Artifact review** — each phase output rendered cleanly for the human to approve or reject.
+- **Degraded-state alarm** — the silence cascade caught in real time: a red halt, not a silent "done".
 
 ---
 
@@ -54,6 +59,8 @@ The result: the silence cascade is now impossible by construction. A degraded ph
 ---
 
 ## Architecture at a glance
+
+![Forge architecture: four-phase pipeline with human approval gates and the anti-fallback barrier](images/architecture.svg)
 
 - **Orchestration:** Python pipeline with per-phase agents and a single source of truth for state.
 - **State:** local SQLite — one record per project, tracking phase and status.

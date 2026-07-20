@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    
+    <!-- Node Gradients -->
+    <linearGradient id="node-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1F2937" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    
+    <linearGradient id="glow-discovery" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    
+    <linearGradient id="glow-spec" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#6D28D9" />
+    </linearGradient>
+    
+    <linearGradient id="glow-proto" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    
+    <linearGradient id="glow-delivery" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    
+    <linearGradient id="degraded-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </linearGradient>
+    
+    <!-- Shadows & Glows -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: 'Inter', system-ui, sans-serif; font-size: 16px; font-weight: 700; fill: #FFFFFF; }
+    .subtitle { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #9CA3AF; }
+    .label { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #E5E7EB; text-anchor: middle; }
+    .sublabel { font-family: 'Inter', system-ui, sans-serif; font-size: 10px; fill: #9CA3AF; text-anchor: middle; }
+    .gate-label { font-family: 'Inter', system-ui, sans-serif; font-size: 10px; font-weight: 700; fill: #10B981; text-anchor: middle; }
+    .barrier-label { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; font-weight: 700; fill: #FCA5A5; }
+    .arrow-solid { stroke: #4B5563; stroke-width: 2; fill: none; }
+    .arrow-active { stroke: #3B82F6; stroke-width: 2; fill: none; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" rx="12" fill="url(#bg-grad)" />
+  <rect width="100%" height="100%" rx="12" fill="none" stroke="#1F2937" stroke-width="2" />
+
+  <!-- Diagram Title -->
+  <text x="30" y="35" class="title">Forge Engine Pipeline Architecture</text>
+  <text x="30" y="55" class="subtitle">Four-phase autonomous execution with mandatory human gates and security fallback barriers</text>
+
+  <!-- PHASE 1: DISCOVERY -->
+  <g transform="translate(40, 100)" filter="url(#shadow)">
+    <rect width="130" height="80" rx="8" fill="url(#node-grad)" stroke="url(#glow-discovery)" stroke-width="2" />
+    <text x="65" y="32" class="label">1. Discovery</text>
+    <text x="65" y="48" class="sublabel">Scrapes Competitors</text>
+    <text x="65" y="62" class="sublabel">&amp; Synthesizes Info</text>
+    <circle cx="20" cy="20" r="4" fill="#3B82F6" />
+  </g>
+
+  <!-- Connection Line 1 to Gate 1 -->
+  <path d="M 170 140 L 210 140" class="arrow-active" />
+
+  <!-- GATE 1 -->
+  <g transform="translate(210, 115)" filter="url(#shadow)">
+    <polygon points="25,0 50,25 25,50 0,25" fill="#064E3B" stroke="#10B981" stroke-width="1.5" />
+    <text x="25" y="28" class="gate-label">OK?</text>
+    <text x="25" y="-10" class="sublabel" font-weight="bold">Human Gate</text>
+  </g>
+
+  <!-- Connection Gate 1 to Phase 2 -->
+  <path d="M 260 140 L 300 140" class="arrow-active" />
+
+  <!-- PHASE 2: SPECIFICATION -->
+  <g transform="translate(300, 100)" filter="url(#shadow)">
+    <rect width="130" height="80" rx="8" fill="url(#node-grad)" stroke="url(#glow-spec)" stroke-width="2" />
+    <text x="65" y="32" class="label">2. Specification</text>
+    <text x="65" y="48" class="sublabel">PRD Synthesis &amp;</text>
+    <text x="65" y="62" class="sublabel">Decision Escalation</text>
+    <circle cx="20" cy="20" r="4" fill="#8B5CF6" />
+  </g>
+
+  <!-- Connection Line 2 to Gate 2 -->
+  <path d="M 430 140 L 470 140" class="arrow-active" />
+
+  <!-- GATE 2 -->
+  <g transform="translate(470, 115)" filter="url(#shadow)">
+    <polygon points="25,0 50,25 25,50 0,25" fill="#064E3B" stroke="#10B981" stroke-width="1.5" />
+    <text x="25" y="28" class="gate-label">OK?</text>
+    <text x="25" y="-10" class="sublabel" font-weight="bold">Human Gate</text>
+  </g>
+
+  <!-- Connection Gate 2 to Phase 3 -->
+  <path d="M 520 140 L 560 140" class="arrow-active" />
+
+  <!-- PHASE 3: PROTOTYPE -->
+  <g transform="translate(560, 100)" filter="url(#shadow)">
+    <rect width="130" height="80" rx="8" fill="url(#node-grad)" stroke="url(#glow-proto)" stroke-width="2" />
+    <text x="65" y="32" class="label">3. Prototype</text>
+    <text x="65" y="48" class="sublabel">Scaffolds Code</text>
+    <text x="65" y="62" class="sublabel">&amp; Interactive Mock</text>
+    <circle cx="20" cy="20" r="4" fill="#10B981" />
+  </g>
+
+  <!-- Connection Line 3 to Gate 3 -->
+  <path d="M 690 140 L 715 140 C 730 140, 730 190, 730 210" class="arrow-active" />
+
+  <!-- GATE 3 -->
+  <g transform="translate(705, 210)" filter="url(#shadow)">
+    <polygon points="25,0 50,25 25,50 0,25" fill="#064E3B" stroke="#10B981" stroke-width="1.5" />
+    <text x="25" y="28" class="gate-label">OK?</text>
+  </g>
+
+  <!-- Connection Gate 3 to Phase 4 -->
+  <path d="M 730 260 C 730 280, 730 330, 715 330 L 690 330" class="arrow-active" />
+
+  <!-- PHASE 4: DELIVERY -->
+  <g transform="translate(560, 290)" filter="url(#shadow)">
+    <rect width="130" height="80" rx="8" fill="url(#node-grad)" stroke="url(#glow-delivery)" stroke-width="2" />
+    <text x="65" y="32" class="label">4. Delivery</text>
+    <text x="65" y="48" class="sublabel">Packaging, Tests</text>
+    <text x="65" y="62" class="sublabel">&amp; Documentation</text>
+    <circle cx="20" cy="20" r="4" fill="#F59E0B" />
+  </g>
+
+  <!-- ANCHOR - DEGRADATION BARRIER -->
+  <g transform="translate(40, 230)" filter="url(#shadow)">
+    <!-- Red glowing border for barrier -->
+    <rect width="610" height="40" rx="6" fill="#1F1616" stroke="url(#degraded-grad)" stroke-width="1.5" />
+    <text x="20" y="24" class="barrier-label">🚨 ANTI-FALLBACK DEGRADATION BARRIER (Invariable Gate)</text>
+    <text x="320" y="24" font-family="'Inter', sans-serif" font-size="10px" fill="#FCA5A5">Blocks auto-advance on complete_degraded states. Requires manual human override.</text>
+  </g>
+
+  <!-- Connector from phases down to the degradation barrier -->
+  <!-- Phase 1 status failure redirect -->
+  <path d="M 105 180 L 105 230" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="3 3" />
+  <!-- Phase 2 status failure redirect -->
+  <path d="M 365 180 L 365 230" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="3 3" />
+</svg>
