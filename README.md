@@ -4,7 +4,7 @@
 
 > Built by Bruno Aragão — a decade in B2B fintech sales, now building reliable AI systems. This is what "AI executes, the human decides" looks like in code.
 
-> Forge orchestrates AI agents through the full product lifecycle — discovery, specification, prototype, delivery — with mandatory human review at every phase. The human stays in command; the agents execute.
+> Forge orchestrates AI agents through the full product lifecycle — discovery, specification, prototype, delivery with mandatory human review at every phase. The human stays in command; the agents execute.
 
 This repository is a **showcase**: it documents the system, its architecture, and the engineering decisions behind it. The core engine is kept private as a working tool, but the design, the reasoning, and the cockpit are shown here in full.
 
@@ -12,20 +12,20 @@ This repository is a **showcase**: it documents the system, its architecture, an
 
 ## What Forge does
 
-You give Forge a project brief — a product idea with business context. It runs a four-phase pipeline:
+You give Forge a project brief a product idea with business context. It runs a four-phase pipeline:
 
 **Discovery** → research and competitor synthesis
 **Specification** → a structured PRD, with strategic decisions escalated to the human
 **Prototype** → a working scaffold
 **Delivery** → tests, documentation, packaging
 
-Each phase ends by writing an artifact and **stopping for human approval**. Nothing advances on its own. This checkpoint isn't a limitation — it's the entire point. Forge is not "AI does everything"; it's "AI executes, the human decides."
+Each phase ends by writing an artifact and **stopping for human approval**. Nothing advances on its own. This checkpoint isn't a limitation it's the entire point. Forge is not "AI does everything"; it's "AI executes, the human decides."
 
 ---
 
 ## The cockpit
 
-Forge is operated through a visual mission-control dashboard — see the pipeline state, review each artifact rendered cleanly, approve with a click, and trigger runs.
+Forge is operated through a visual mission-control dashboard see the pipeline state, review each artifact rendered cleanly, approve with a click, and trigger runs.
 
 [![Status cockpit](images/cockpit-status.png)](images/cockpit-status.png)
 [![Artifact review](images/cockpit-review.png)](images/cockpit-review.png)
@@ -48,13 +48,13 @@ The most important thing Forge does is **fail loudly instead of failing silently
 **The fix — making it mechanically impossible.** The lesson became a code invariant, not a guideline:
 
 - A phase that completes via a fallback/degraded path is marked `complete_degraded`, never `complete`.
-- The pipeline **refuses to advance** from a degraded state — even in automatic mode. Auto-run cannot bypass it.
+- The pipeline **refuses to advance** from a degraded state even in automatic mode. Auto-run cannot bypass it.
 - The only way past a degraded phase is an explicit human review and approval.
 - Unexpected code errors propagate and surface; they are never disguised as API failures and routed into the silent-fallback path.
 
-The result: the silence cascade is now impossible by construction. A degraded phase halts the pipeline and raises a visible alarm — in the CLI and in the cockpit — rather than quietly poisoning everything downstream.
+The result: the silence cascade is now impossible by construction. A degraded phase halts the pipeline and raises a visible alarm in the CLI and in the cockpit — rather than quietly poisoning everything downstream.
 
-**Why it matters.** This is the difference between "uses AI" and "understands the risks of operating AI in production." Automation that trusts blindly is dangerous; automation that knows when to stop and ask a human is trustworthy. That principle — surfaced by a real failure, hardened into an invariant — is the spine of the whole system.
+**Why it matters.** This is the difference between "uses AI" and "understands the risks of operating AI in production." Automation that trusts blindly is dangerous; automation that knows when to stop and ask a human is trustworthy. That principle — surfaced by a real failure, hardened into an invariant is the spine of the whole system.
 
 ---
 
@@ -63,7 +63,7 @@ The result: the silence cascade is now impossible by construction. A degraded ph
 ![Forge architecture: four-phase pipeline with human approval gates and the anti-fallback barrier](images/architecture.svg)
 
 - **Orchestration:** Python pipeline with per-phase agents and a single source of truth for state.
-- **State:** local SQLite — one record per project, tracking phase and status.
+- **State:** local SQLite one record per project, tracking phase and status.
 - **Research:** web/competitor scraping feeding AI synthesis.
 - **Safety:** the anti-fallback invariant described above, plus an audit trail for unsupervised runs.
 - **Interface:** a FastAPI backend serving a React cockpit; markdown artifacts rendered for review; approvals and runs driven from the UI.
